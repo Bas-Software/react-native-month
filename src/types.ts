@@ -146,4 +146,5 @@ export interface MonthProps {
   theme?: ThemeType;
   renderDayContent?: (day: DayType) => ReactElement;
   disabledDays?: { [key: string]: any };
+  showWeekNumbers?: boolean;
 }

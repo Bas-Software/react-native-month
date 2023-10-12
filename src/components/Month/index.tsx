@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { DayType, MonthProps } from '../../types';
 import { getDayNames } from '../../utils/date';
 import { getMonthDays, areEqual } from '../utils';
@@ -32,6 +32,7 @@ export default React.memo<MonthProps>((props: MonthProps) => {
     theme = {},
     renderDayContent,
     showSixWeeks = false,
+    showWeekNumbers = false,
   } = props;
 
   const DAY_NAMES =
@@ -61,9 +62,20 @@ export default React.memo<MonthProps>((props: MonthProps) => {
 
   return (
     <>
-      {showWeekdays && <WeekDays days={DAY_NAMES} theme={theme} />}
+      {showWeekdays && (
+        <WeekDays
+          days={DAY_NAMES}
+          theme={theme}
+          showWeekNumbers={showWeekNumbers}
+        />
+      )}
       {weeks.map((week: DayType[], index: number) => (
         <View key={String(index)} style={styles.weekContainer}>
+          {showWeekNumbers && (
+            <View>
+              <Text>0</Text>
+            </View>
+          )}
           {week.map((day: DayType) => (
             <Day
               key={day.key}

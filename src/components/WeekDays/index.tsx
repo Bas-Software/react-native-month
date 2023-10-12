@@ -33,6 +33,7 @@ const WeekColumn = React.memo<WeekColumnProps>(
 interface WeekDaysProps {
   days: string[];
   theme: ThemeType;
+  showWeekNumbers?: boolean;
 }
 
 export default React.memo<WeekDaysProps>(
@@ -40,6 +41,11 @@ export default React.memo<WeekDaysProps>(
     <View
       style={[styles.weekDaysContainer, props.theme.weekColumnsContainerStyle]}
     >
+      {props.showWeekNumbers && (
+        <View
+          style={[styles.weekColumnContainer, props.theme.weekColumnStyle]}
+        />
+      )}
       {props.days.map((day: string) => (
         <WeekColumn key={day} day={day} theme={props.theme} />
       ))}

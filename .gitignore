@@ -9,6 +9,9 @@
 .vscode/
 jsconfig.json
 
+#Idea
+.idea
+
 # node.js
 #
 node_modules/
